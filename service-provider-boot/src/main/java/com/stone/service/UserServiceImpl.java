@@ -10,6 +10,8 @@ public class UserServiceImpl implements UserService{
 			return "用户1 -- Boot方式";
 		}else if("2".equals(userId)) {
 			return "用户2 -- Boot方式";
+		}else if("3".equals(userId)) {
+			return "用户3 -- Boot方式";
 		}
 		return "请输入id获取用户";
 	}

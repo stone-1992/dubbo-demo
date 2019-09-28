@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+		    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        
+		    http://dubbo.apache.org/schema/dubbo        
+		    http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+ 
+    <!-- 1、指定当前服务/应用名字（同样的服务名字相同，不要和别的服务同名） -->
+    <dubbo:application name="service-provider" />
+    <!-- 2、指定注册中心的位置 -->
+    <dubbo:registry address="zookeeper://192.168.180.135:2181"/>
+    <!-- 3、指定通信规则（通信协议，通信端口）-->
+    <dubbo:protocol name="dubbo" port="20881"/>
+    <!-- 4、暴露哪个服务，ref:指向服务的真正实现对象 -->
+    <dubbo:service interface="com.stone.service.UserService" ref="userServiceImpl" />
+    <!-- 5、服务的实现 -->
+    <bean id="userServiceImpl" class="com.java.service.impl.UserServiceImpl" />
+</beans>
